@@ -10,6 +10,9 @@ import { PrincipalLogin } from '@/pages/principal/PrincipalLogin'
 import { PrincipalDashboard } from '@/pages/principal/PrincipalDashboard'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { FeaturesSection } from '@/components/sections/FeaturesSection'
+import { BenchmarkStatsSection } from '@/components/sections/BenchmarkStatsSection'
+import { BuiltWithTradersSection } from '@/components/sections/BuiltWithTradersSection'
+import { ScalableSolutionsSection } from '@/components/sections/ScalableSolutionsSection'
 // import { VideoShowcaseSection } from '@/components/sections/VideoShowcaseSection'
 import { NumbersSection } from '@/components/sections/NumbersSection'
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection'
@@ -136,6 +139,9 @@ function HomePage() {
       <div style={{ position: 'relative', zIndex: 1 }}>
       <HeroSection />
       <FeaturesSection />
+      <BenchmarkStatsSection />
+      <BuiltWithTradersSection />
+      <ScalableSolutionsSection />
       {/* VideoShowcaseSection removed */}
       <NumbersSection />
       <TestimonialsSection />
