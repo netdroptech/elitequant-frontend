@@ -4,10 +4,13 @@ import { Reveal } from '@/components/ui/Reveal'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
+const PARTNER_IMAGE =
+  'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1100&q=80'
+
 const POINTS = [
-  'Quickly migrate your existing portfolio onto the EliteQuantFin platform.',
-  'Get personalised trade recommendations based on years of historical market data, powered by our analytics model.',
-  'Continue to grow your portfolio with access to unique and emerging markets and instruments, including crypto.',
+  'Quickly migrate current partners into the EliteQuantFin affiliate network.',
+  'Get new partner recommendations based on years of historical data, powered by our matchmaking model.',
+  'Continue to grow your publisher base with access to unique and emerging partners and channels, including influencers.',
 ]
 
 export function BuiltWithTradersSection() {
@@ -19,15 +22,15 @@ export function BuiltWithTradersSection() {
         {/* Left — copy */}
         <Reveal direction="right">
           <h2 className="text-hero-heading text-3xl sm:text-5xl font-semibold leading-tight">
-            A Strong Trading Platform Is Built With Great Traders
+            A Strong Affiliate Program Is Built With Great Partners
           </h2>
           <p className="text-muted-foreground text-base sm:text-lg mt-6 leading-relaxed">
-            The best trading platforms are always evolving to bring on new traders who can drive growth.
-            We help you access the markets and tools that enable you to meet and exceed your goals.
+            The best affiliate programs are always evolving to bring on new partners that can drive growth.
+            We help you source partners that enable you to meet and exceed your goals.
           </p>
 
           <p className="text-hero-heading text-base sm:text-lg font-semibold mt-8 mb-4">
-            Here&rsquo;s How We Help Traders and Investors:
+            Here&rsquo;s How We Help Brands and Publishers:
           </p>
           <ul className="flex flex-col gap-4">
             {POINTS.map((point) => (
@@ -47,21 +50,15 @@ export function BuiltWithTradersSection() {
           </div>
         </Reveal>
 
-        {/* Right — decorative highlight panel */}
+        {/* Right — real image */}
         <Reveal direction="left" delay={120}>
-          <div className={cn('liquid-glass rounded-3xl p-8 sm:p-12 flex flex-col gap-8')}>
-            <div>
-              <p className="text-hero-heading text-5xl sm:text-6xl font-semibold tracking-tight">150+</p>
-              <p className="text-muted-foreground text-sm mt-2">Countries with active traders</p>
-            </div>
-            <div className="border-t border-border/50 pt-8">
-              <p className="text-hero-heading text-5xl sm:text-6xl font-semibold tracking-tight">&lt;1ms</p>
-              <p className="text-muted-foreground text-sm mt-2">Average order execution speed</p>
-            </div>
-            <div className="border-t border-border/50 pt-8">
-              <p className="text-hero-heading text-5xl sm:text-6xl font-semibold tracking-tight">24/7</p>
-              <p className="text-muted-foreground text-sm mt-2">Support and market access</p>
-            </div>
+          <div className={cn('liquid-glass rounded-3xl p-2 overflow-hidden')}>
+            <img
+              src={PARTNER_IMAGE}
+              alt="Affiliate partners collaborating"
+              loading="lazy"
+              className="w-full h-full object-cover rounded-[1.35rem] aspect-[4/3]"
+            />
           </div>
         </Reveal>
       </div>

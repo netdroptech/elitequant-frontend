@@ -2,10 +2,10 @@ import { Reveal } from '@/components/ui/Reveal'
 import { cn } from '@/lib/utils'
 
 const STATS = [
-  { value: '25+',     label: 'Years Leading the Markets' },
-  { value: '#1',      label: 'In Global Trading Volume' },
-  { value: '1200M+',  label: 'Traders Reached' },
-  { value: '200M+',   label: 'Trades Completed' },
+  { value: '25+',     label: 'Years Leading Affiliate' },
+  { value: '#1',      label: 'In Global Traffic' },
+  { value: '1200M+',  label: 'Consumers Reached' },
+  { value: '200M+',   label: 'Transactions Completed' },
 ]
 
 export function BenchmarkStatsSection() {
@@ -14,7 +14,7 @@ export function BenchmarkStatsSection() {
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
         <Reveal className="text-center mb-12 sm:mb-16">
           <h2 className="text-hero-heading text-3xl sm:text-5xl font-semibold leading-tight max-w-4xl mx-auto">
-            Our Traders Consistently Outperform Industry Benchmarks — And We&rsquo;ve Got the Data to Back It Up
+            Our Affiliates Consistently Outperform Industry Benchmarks — And We&rsquo;ve Got the Data to Back It Up
           </h2>
         </Reveal>
 

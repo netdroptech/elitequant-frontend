@@ -8,33 +8,33 @@ type Solution = { icon: LucideIcon; title: string; desc: string }
 const SOLUTIONS: Solution[] = [
   {
     icon: Cog,
-    title: 'Automated Trading Management',
-    desc: 'Streamline your trading workflows using our advanced automation tools and dashboards.',
+    title: 'Automated Program Management',
+    desc: 'Streamline affiliate workflows using our advanced automation tools and dashboards.',
   },
   {
     icon: BarChart3,
     title: 'Real-Time Analytics',
-    desc: 'Access detailed insights to optimise your positions, track market performance, and grow your returns.',
+    desc: 'Access detailed insights to optimise campaigns, track partner performance, and increase ROI.',
   },
   {
     icon: Globe,
     title: 'Global Scaling Infrastructure',
-    desc: 'Expand across borders with access to global markets and localised trading support.',
+    desc: 'Expand across borders with geo-targeted campaigns and localised affiliate support.',
   },
   {
     icon: Brain,
     title: 'Expert Strategy Guidance',
-    desc: 'Partner with experienced strategists to sharpen your edge and refine your approach.',
+    desc: 'Partner with experienced strategists to sharpen your program and refine your approach.',
   },
   {
     icon: Link2,
     title: 'Seamless Integrations',
-    desc: 'Easily connect your stack with our trading platform, APIs, and real-time market data feeds.',
+    desc: 'Easily connect your stack with our affiliate platform, APIs, and tracking tools.',
   },
   {
     icon: Rocket,
     title: 'Performance Optimization',
-    desc: 'Continuous testing, risk scoring, and portfolio tuning keep you performing at your best.',
+    desc: 'Continuous testing, partner scoring, and campaign tuning to keep you performing at your best.',
   },
 ]
 
@@ -59,7 +59,7 @@ export function ScalableSolutionsSection() {
             Scalable Solutions Through<br className="hidden sm:block" /> Technology &amp; Expertise
           </h2>
           <p className="text-muted-foreground text-base sm:text-lg mt-4 max-w-2xl mx-auto">
-            Empower your growth with technology-driven trading strategies and expert support built to scale.
+            Empower your business growth with technology-driven affiliate strategies and expert support built to scale.
           </p>
         </Reveal>
 
