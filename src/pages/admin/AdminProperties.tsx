@@ -502,7 +502,7 @@ export function AdminProperties() {
               {/* Title + Type */}
               <div className="grid sm:grid-cols-2 gap-4">
                 <F label="Property Title *">
-                  <input value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} placeholder="e.g. Lekki Ocean View Villa" style={inp()} />
+                  <input value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} placeholder="e.g. Miami Ocean View Villa" style={inp()} />
                 </F>
                 <F label="Property Type">
                   <select value={form.type} onChange={e => setForm(f => ({ ...f, type: e.target.value }))} style={{ ...inp(), appearance: 'none' }}>
@@ -513,14 +513,14 @@ export function AdminProperties() {
 
               {/* Address + City + Country */}
               <F label="Street Address">
-                <input value={form.address} onChange={e => setForm(f => ({ ...f, address: e.target.value }))} placeholder="e.g. 14 Admiralty Way" style={inp()} />
+                <input value={form.address} onChange={e => setForm(f => ({ ...f, address: e.target.value }))} placeholder="e.g. 123 Ocean Drive" style={inp()} />
               </F>
               <div className="grid sm:grid-cols-2 gap-4">
                 <F label="City *">
-                  <input value={form.city} onChange={e => setForm(f => ({ ...f, city: e.target.value }))} placeholder="e.g. Lagos" style={inp()} />
+                  <input value={form.city} onChange={e => setForm(f => ({ ...f, city: e.target.value }))} placeholder="e.g. Miami" style={inp()} />
                 </F>
                 <F label="Country">
-                  <input value={form.country} onChange={e => setForm(f => ({ ...f, country: e.target.value }))} placeholder="e.g. Nigeria" style={inp()} />
+                  <input value={form.country} onChange={e => setForm(f => ({ ...f, country: e.target.value }))} placeholder="e.g. USA" style={inp()} />
                 </F>
               </div>
 
