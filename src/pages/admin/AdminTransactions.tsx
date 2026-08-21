@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Search, Filter, CheckCircle2, X, Clock, ChevronRight, RefreshCw, ImageIcon, ExternalLink } from 'lucide-react'
+import { Search, Filter, CheckCircle2, X, Clock, ChevronRight, RefreshCw, ImageIcon, ExternalLink, Copy, Check } from 'lucide-react'
 import { adminApi } from '@/lib/api'
 
 const API_BASE = (import.meta.env.VITE_API_URL ?? 'http://localhost:4000/api').replace('/api', '')
@@ -15,6 +15,8 @@ interface Transaction {
   note?:       string
   adminNote?:  string
   proofUrl?:   string
+  network?:       string
+  walletAddress?: string
   createdAt:   string
   completedAt?: string
   user: {
@@ -84,6 +86,65 @@ function ProofModal({ url, onClose }: { url: string; onClose: () => void }) {
           <img src={fullUrl} alt="Payment proof" style={{ width: '100%', maxHeight: 500, objectFit: 'contain', borderRadius: 8, display: 'block' }}
             onError={e => { (e.target as HTMLImageElement).style.display = 'none' }} />
         </div>
+      </div>
+    </div>
+  )
+}
+
+// ─── Destination / Wallet Address Cell ────────────────────────────────────────
+// Shows where a withdrawal is being sent. For crypto withdrawals this is the
+// wallet address (with the network/coin label above it); for other methods
+// (e.g. bank/wire) it falls back to the details captured in the note.
+// Includes a one-click copy button so admins can paste the address into their
+// wallet when processing the payout.
+
+function DestinationCell({ tx }: { tx: Transaction }) {
+  const [copied, setCopied] = useState(false)
+
+  // Only withdrawals have a payout destination.
+  if (tx.type !== 'WITHDRAWAL') {
+    return <span style={{ fontSize: 11, color: 'hsl(240 5% 38%)' }}>—</span>
+  }
+
+  const address = (tx.walletAddress ?? '').trim()
+  // Fallback for non-crypto methods where the destination lives in the note.
+  const display = address || (tx.note ?? '').trim()
+
+  if (!display) {
+    return <span style={{ fontSize: 11, color: 'hsl(240 5% 38%)' }}>—</span>
+  }
+
+  const copy = () => {
+    const text = address || display
+    if (!navigator.clipboard) return
+    navigator.clipboard.writeText(text)
+      .then(() => { setCopied(true); setTimeout(() => setCopied(false), 1500) })
+      .catch(() => { /* clipboard blocked — silently ignore */ })
+  }
+
+  return (
+    <div style={{ maxWidth: 220 }}>
+      {tx.network && (
+        <p style={{ fontSize: 9, fontWeight: 700, color: '#a78bfa', marginBottom: 2, textTransform: 'uppercase', letterSpacing: '0.05em', whiteSpace: 'nowrap' }}>
+          {tx.network}
+        </p>
+      )}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+        <span
+          title={address || display}
+          style={{ fontSize: 11, fontFamily: 'monospace', color: 'hsl(40 6% 78%)', maxWidth: 160, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
+        >
+          {address || display}
+        </span>
+        {address && (
+          <button
+            onClick={copy}
+            title={copied ? 'Copied!' : 'Copy address'}
+            style={{ width: 22, height: 22, borderRadius: 5, background: copied ? 'rgba(167,139,250,0.15)' : 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', color: copied ? '#a78bfa' : 'hsl(240 5% 55%)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', flexShrink: 0 }}
+          >
+            {copied ? <Check size={11} /> : <Copy size={11} />}
+          </button>
+        )}
       </div>
     </div>
   )
@@ -251,10 +312,10 @@ export function AdminTransactions() {
           </div>
         ) : (
           <div style={{ overflowX: 'auto' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 860 }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 1040 }}>
               <thead>
                 <tr style={{ background: 'rgba(255,255,255,0.025)' }}>
-                  {['ID','USER','TYPE','AMOUNT','DATE','STATUS','PROOF','ACTIONS'].map(h => (
+                  {['ID','USER','TYPE','AMOUNT','DESTINATION','DATE','STATUS','PROOF','ACTIONS'].map(h => (
                     <th key={h} style={{ padding: '10px 14px', textAlign: 'left', fontSize: 10, fontWeight: 700, color: 'hsl(240 5% 42%)', letterSpacing: '0.07em', whiteSpace: 'nowrap' }}>{h}</th>
                   ))}
                 </tr>
@@ -293,6 +354,11 @@ export function AdminTransactions() {
 
                       <td style={{ padding: '11px 14px', fontSize: 12.5, fontWeight: 700, color: isOut ? '#f87171' : '#a78bfa', whiteSpace: 'nowrap' }}>
                         {isOut ? '−' : '+'} ${Number(tx.amount).toLocaleString()}
+                      </td>
+
+                      {/* Destination — wallet address for withdrawals */}
+                      <td style={{ padding: '11px 14px' }}>
+                        <DestinationCell tx={tx} />
                       </td>
 
                       <td style={{ padding: '11px 14px', fontSize: 11, color: 'hsl(240 5% 48%)', whiteSpace: 'nowrap' }}>
@@ -344,7 +410,7 @@ export function AdminTransactions() {
                   )
                 })}
                 {filtered.length === 0 && !loading && (
-                  <tr><td colSpan={8} style={{ padding: 48, textAlign: 'center', fontSize: 13, color: 'hsl(240 5% 44%)' }}>
+                  <tr><td colSpan={9} style={{ padding: 48, textAlign: 'center', fontSize: 13, color: 'hsl(240 5% 44%)' }}>
                     {total === 0 ? 'No transactions yet.' : 'No transactions match your filters.'}
                   </td></tr>
                 )}
