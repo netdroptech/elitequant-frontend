@@ -10,6 +10,13 @@ export interface AuthUser {
   lastName:    string
   phone?:      string
   country?:    string
+  city?:        string
+  state?:       string
+  address?:     string
+  postalCode?:  string
+  nationality?: string
+  occupation?:  string
+  dateOfBirth?: string
   avatarUrl?:  string
   // Public profile (set via /dashboard/settings/profile)
   displayName?: string
