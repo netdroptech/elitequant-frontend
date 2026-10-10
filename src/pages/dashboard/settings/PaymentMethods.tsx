@@ -58,7 +58,7 @@ export function PaymentMethods() {
       </div>
 
       {/* Crypto Wallets */}
-      <Section title="Crypto Wallets" sub="Deposit and withdraw using crypto addresses" action={<AddBtn onClick={() => {}} label="Add Wallet" />}>
+      {/* <Section title="Crypto Wallets" sub="Deposit and withdraw using crypto addresses" action={<AddBtn onClick={() => {}} label="Add Wallet" />}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           {CRYPTOS.map(w => (
             <div key={w.id} style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
@@ -75,7 +75,7 @@ export function PaymentMethods() {
             </div>
           ))}
         </div>
-      </Section>
+      </Section> */}
 
       {/* Limits Overview */}
       <Section title="Transaction Limits" sub="Your current deposit and withdrawal limits">
