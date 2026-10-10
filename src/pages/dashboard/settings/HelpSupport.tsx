@@ -23,7 +23,7 @@ export function HelpSupport() {
       items: [
         { q: 'How do I create an account?', a: 'Click "Sign Up" on the homepage and enter your email. You\'ll receive a verification link within minutes. Once verified, complete your profile to gain full access.' },
         { q: 'What documents do I need for KYC?', a: 'You\'ll need a government-issued photo ID (passport, national ID, or driver\'s license) and a selfie holding your document. Verification typically takes 1–2 business days.' },
-        { q: 'How do I deposit funds?', a: 'Go to Wallet & Funds → Deposit. Choose your preferred method (bank transfer, card, or crypto), enter the amount, and follow the on-screen instructions.' },
+        { q: 'How do I deposit funds?', a: 'Go to Wallet & Funds → Deposit. Choose your preferred crypto wallet, enter the amount, and follow the on-screen instructions.' },
       ],
     },
     {
