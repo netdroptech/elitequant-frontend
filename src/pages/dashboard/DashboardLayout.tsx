@@ -486,7 +486,7 @@ export function DashboardLayout() {
                     },
                     {
                       icon: CreditCard, iconColor: '#f59e0b', iconBg: 'rgba(245,158,11,0.15)',
-                      label: 'Payment Methods',   sub: 'Cards, banks & crypto',
+                      label: 'Payment Methods',   sub: 'Crypto wallets',
                       path: '/dashboard/settings/payments',
                     },
                     {
